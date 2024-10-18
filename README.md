@@ -4,10 +4,10 @@
 
 DaisyUI provides some CSS-only 'components' based on Tailwind.
 
-If you do the setup below, you can run the tailwind style watcher and have live CSS updates in your electric `npm run build:tailwind:dev`.
+If you do the setup below, you can run the tailwind style watcher in one process, and have live CSS updates in your electric app:
 
-Then separately do your normal electric code:
-* Shell: `clj -A:dev -X dev/-main`, or repl: `(dev/-main)`
+* `npm run build:tailwind:dev`
+* `clj -A:dev -X dev/-main`, or repl: `(dev/-main)`
 
 ## DaisyUI / TailwindCSS Instructions
 

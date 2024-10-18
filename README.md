@@ -1,6 +1,75 @@
 # Electric Starter App (Electric v2)
 
-A minimal Electric Clojure app, and instructions on how to integrate it into an existing app. For more demos and examples, see [Electric Fiddle](https://github.com/hyperfiddle/electric-fiddle).
+## Demo with CSS-only DaisyUI & TailwindCSS
+
+DaisyUI provides some CSS-only 'components' based on Tailwind.
+
+If you do the setup below, you can run the tailwind style watcher and have live CSS updates in your electric `npm run build:tailwind:dev`.
+
+Then separately do your normal electric code:
+* Shell: `clj -A:dev -X dev/-main`, or repl: `(dev/-main)`
+
+## DaisyUI / TailwindCSS Instructions
+
+* DaisyUI instructions at: [https://daisyui.com/docs/install/]()
+* Requires tailwind installed: [https://tailwindcss.com/docs/installation]()
+
+```bash
+npm init
+npm i -D tailwindcss
+npx tailwindcss init
+# add some plugins if you want
+npm i -D @tailwindcss/forms @tailwindcss/typography
+# add daisyui
+npm i -D daisyui@latest
+```
+
+* edit tailwind config, add `daisyui` plugin, themes if you want, and the content path to your clojure code `./src/**/*`
+* The tailwind watcher seems to parse the source ok
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*",
+    "./resources/public/halo_electric/index.html"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    // require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: ["lemonade"],
+  },
+}
+```
+
+* add your tailwind input (eg `input.css`) to `resources/input.css`
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+* the output file name (eg `styles.css`) and your theme (`data-theme`) to your `index.html`
+```html
+<html data-theme="corporate">
+...
+    <link href="./styles.css" rel="stylesheet">
+```
+
+* some npm scripts in `package.json` to run the watcher or build
+```json
+  "scripts": {
+    "build:tailwind:dev": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --watch",
+    "build:tailwind": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --minify",
+  },
+```
+
 
 ## Instructions
 

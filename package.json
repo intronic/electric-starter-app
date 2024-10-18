@@ -1,0 +1,19 @@
+{
+  "name": "electric-starter-app",
+  "version": "1.0.0",
+  "description": "## Demo with CSS-only DaisyUI & TailwindCSS",
+  "main": "index.js",
+  "scripts": {
+    "build:tailwind:dev": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --watch",
+    "build:tailwind": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "daisyui": "^4.12.13",
+    "tailwindcss": "^3.4.14"
+  }
+}

@@ -2,6 +2,10 @@
 
 A minimal Electric Clojure app, and instructions on how to integrate it into an existing app. For more demos and examples, see [Electric Fiddle](https://github.com/hyperfiddle/electric-fiddle).
 
+
+* See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css)
+for example usage of [DaisyUI](https://daisyui.com/) providing *CSS-only* copmonents for [Tailwind CSS](https://tailwindcss.com/).
+
 ## Instructions
 
 Dev build:

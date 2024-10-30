@@ -1,6 +1,6 @@
 # Electric Starter App (Electric v2)
 
-A minimal Electric Clojure app, and instructions on how to integrate it into an existing app. For more demos and examples, see [Electric Fiddle](https://github.com/hyperfiddle/electric-fiddle).
+A minimal Electric Clojure app, and instructions on how to integrate it into an existing app.
 
 
 * See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css)

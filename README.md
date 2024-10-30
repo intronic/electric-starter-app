@@ -6,6 +6,117 @@ A minimal Electric Clojure app, and instructions on how to integrate it into an 
 
 * See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css) for example usage of [DaisyUI](https://daisyui.com/) providing *CSS-only* copmonents for [Tailwind CSS](https://tailwindcss.com/).
 
+## Demo with PrelineUI & TailwindCSS
+
+Preline provides some CSS-only / some JS required 'components' based on Tailwind.
+
+* See note about initialising components: [Preline JavaScript](https://preline.co/docs/preline-javascript.html)
+
+If you do the setup below, you can run the tailwind style watcher in one process, and have live CSS updates in your electric app:
+
+* `npm run build:tailwind:dev`
+* `clj -A:dev -X dev/-main`, or repl: `(dev/-main)`
+
+## Process PrelineUI HTML to Electric DOM
+
+* Convert Preline HTML example code to Electric DOM code
+  * by hand, or see below section
+
+* Then call the preline `autoInit` in your main element after the electric dom is loaded
+  * I'm not sure yet if this needs to be done at the end of every component, or just after the root one.
+```clj
+(defn preline-autoinit
+  "Trigger preline to init. Must be done after nodes loaded.
+   Preline attaches event handlers to the Electric dom nodes."
+  []
+  #?(:cljs (.. ^js js/window -HSStaticMethods autoInit)))
+
+(e/defn Main [ring-request]
+  (e/client
+    (binding [dom/node js/document.body]
+      (NavBar.)
+      (preline-autoinit))))
+```
+
+## Convert HTML to Electric
+
+* Download [electrify-html](https://clojars.org/com.github.intronic/electrify-html) tool
+* Copy some Preline HTML example code and save as a file
+* Convert it to an Electric component
+* Eg, save the [application-layout-header)](https://preline.co/examples/layouts-application-navbars.html#application-layout-header) as `header.html` and convert to a component:
+
+```bash
+clojure -X:run-x :file ../header.html > header.cljc
+```
+
+## Install Instructions - PrelineUI / TailwindCSS
+
+* PrelineUI instructions at: [https://preline.co/docs/]()
+* Requires tailwind installed: [https://tailwindcss.com/docs/installation]()
+
+```bash
+npm init
+npm i -D tailwindcss
+npx tailwindcss init
+# add some plugins if you want
+npm i -D @tailwindcss/forms @tailwindcss/typography
+npm i -D preline
+```
+
+* edit tailwind config, add `preline` plugin and content, and the content path to your clojure code `./src/**/*`
+* The tailwind watcher seems to parse the source ok
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*",
+    "./resources/public/halo_electric/index.html",
+    "node_modules/preline/dist/*.js"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
+    require('preline/plugin'),
+  ],
+}
+```
+
+* add your tailwind input (eg `input.css`) to `resources/input.css`
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+* the output file name (eg `styles.css`) to `head` of your `index.html`
+```html
+    ...
+    <link href="./styles.css" rel="stylesheet">
+    ...
+```
+
+* the `preline.js` script near end of `</body>` on your `index.html` (needs to be a path served by jetty (eg, see the `package.json`):
+```html
+    ...
+      <script type="text/javascript" src="./js/vendor/preline/preline.js"></script>
+      <!-- $key$ is a template string. See electric-starter-app.server-jetty/wrap-index-page -->
+      <script type="text/javascript" src="$:hyperfiddle.client.module/main$"></script>
+  </body>
+```
+
+* some npm scripts in `package.json` to run the watcher or build:
+```json
+  "scripts": {
+    "build:tailwind:dev": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --watch",
+    "build:tailwind": "npx tailwindcss -i ./resources/input.css -o ./resources/public/electric_starter_app/styles.css --minify",
+    "update-preline-js": "cp node_modules/preline/dist/preline.js resources/public/electric_starter_app/js/vendor/preline/",
+  },
+```
+
 ## Instructions
 
 Dev build:

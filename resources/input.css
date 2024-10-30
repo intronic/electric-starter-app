@@ -1,0 +1,11 @@
+
+@tailwind base; /* Preflight will be injected here */
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind Preflight:
+      https://tailwindcss.com/docs/preflight
+      https://tailwindcss.com/docs/font-family
+   Preflight sets the font family on the html element to match the users configured sans font..
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+*/

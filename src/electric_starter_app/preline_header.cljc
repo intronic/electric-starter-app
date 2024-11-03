@@ -4,6 +4,8 @@
             #_[hyperfiddle.electric-ui4 :as ui4]
             [hyperfiddle.electric-svg :as svg]))
 
+;;; NavBar example from: https://preline.co/examples/layouts-application-navbars.html#application-layout-header
+
 (e/defn DashboardMenu []
   (e/client
     (dom/a

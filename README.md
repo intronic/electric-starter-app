@@ -20,16 +20,18 @@ If you do the setup below, you can run the tailwind style watcher in one process
 ## Process PrelineUI HTML to Electric DOM
 
 * Convert Preline HTML example code to Electric DOM code
-  * by hand, or see below section
+  * by hand, or see below section for clojure code to do it
 
 * Then call the preline `autoInit` in your main element after the electric dom is loaded
-  * I'm not sure yet if this needs to be done at the end of every component, or just after the root one.
+  * I'm not sure yet if this init needs to be done at the end of every electric component, or just after the root one.
 ```clj
 (defn preline-autoinit
   "Trigger preline to init. Must be done after nodes loaded.
    Preline attaches event handlers to the Electric dom nodes."
   []
-  #?(:cljs (.. ^js js/window -HSStaticMethods autoInit)))
+  #?(:cljs (do
+             (js/console.log "Preline autoInit")
+             (.. js/window -HSStaticMethods autoInit))))
 
 (e/defn Main [ring-request]
   (e/client

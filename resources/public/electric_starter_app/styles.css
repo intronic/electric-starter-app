@@ -1412,6 +1412,10 @@ select {
   vertical-align: bottom;
 }
 
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 .\!text-sm {
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
@@ -1436,6 +1440,11 @@ select {
   line-height: 1rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .\!font-medium {
   font-weight: 500 !important;
 }
@@ -1446,6 +1455,10 @@ select {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .uppercase {
@@ -1494,6 +1507,14 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+.decoration-blue-600 {
+  text-decoration-color: #2563eb;
 }
 
 .opacity-0 {
@@ -1705,6 +1726,10 @@ select {
 .hover\:text-gray-800:hover {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.hover\:opacity-80:hover {
+  opacity: 0.8;
 }
 
 .focus\:border-blue-500:focus {
@@ -1963,6 +1988,11 @@ select {
 
   .md\:ps-0 {
     padding-inline-start: 0px;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .md\:shadow-md {

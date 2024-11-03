@@ -189,7 +189,7 @@
               (DocumentationMenu.))))
         (comment " End Collapse ")))))
 
-(e/defn MainContent []
+(e/defn MainContent [Content]
   (e/client
     (dom/main
       (dom/props {:id "content"})
@@ -199,7 +199,7 @@
       (dom/div
         (dom/props {:class "max-w-[85rem] min-h-[75rem] mx-auto py-10 px-4 sm:px-6 lg:px-8"})
         (comment " your content goes here ... ")
-        (dom/text " your content goes here ... ")))))
+        (Content.)))))
 
 (e/defn SearchInput []
   (e/client
@@ -409,7 +409,7 @@
           (dom/props {:class "sr-only"})
           (dom/text "Toggle navigation"))))))
 
-(e/defn NavBar []
+(e/defn NavBar [Content]
   (e/client
     (comment " https://preline.co/examples/layouts-application-navbars.html#application-layout-header ")
     (comment " ========== HEADER ========== ")
@@ -442,5 +442,5 @@
             (comment " End Dropdown ")))))
     (comment " ========== END HEADER ========== ")
     (comment " ========== MAIN CONTENT ========== ")
-    (MainContent.)
+    (MainContent. Content)
     (comment " ========== END MAIN CONTENT ========== ")))

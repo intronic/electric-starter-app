@@ -16,16 +16,19 @@
   "change theme on browser and save setting on server"
   [event]
   (e/client
-    (let [theme (.. event -target -value)]
+    (let [thm (.. event -target -value)]
       #_(println "> client change theme" (.. js/document -documentElement (getAttribute "data-theme")) "->" theme)
-      (.. js/document -documentElement (setAttribute "data-theme" theme))
+      (.. js/document -documentElement (setAttribute "data-theme" thm))
       (e/server
         #_(println "> server save theme" theme)
-        (reset! !theme theme)))))
+        (reset! !theme thm)))))
 
 (e/defn SelectTheme []
   (e/client
-    (dom/select
+    (dom/label (dom/props {:for ::theme-selector})
+      (dom/text "Theme"))
+    (dom/select (dom/props {:class "select"
+                            :id ::theme-selector})
       (e/server
         (e/for [thm theme-list]
           (e/client
@@ -61,9 +64,7 @@
         (dom/li (dom/props {})
           (dom/a (dom/props {}) (dom/text "Settings")))
         (dom/li (dom/props {})
-          (dom/label (dom/props {})
-            (dom/text "Theme")
-            (SelectTheme.)))
+          (SelectTheme.))
         (dom/li (dom/props {})
           (dom/a (dom/props {}) (dom/text "Logout")))))))
 

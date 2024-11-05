@@ -2,9 +2,18 @@
 
 A minimal Electric Clojure app, and instructions on how to integrate it into an existing app.
 
-* see branch [preline-ui--tailwind-css](https://github.com/intronic/electric-starter-app/tree/preline-ui--tailwind-css) for example usage of [Preline UI]([https://daisyui.com/](https://preline.co/)) providing components (requiring a *JS* init) for [Tailwind CSS](https://tailwindcss.com/).
+Plus .. styled examples for:
 
-* See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css) for example usage of [DaisyUI](https://daisyui.com/) providing *CSS-only* copmonents for [Tailwind CSS](https://tailwindcss.com/).
+* **Tailwind + 3rd-party JS** - See branch [preline-ui--tailwind-css](https://github.com/intronic/electric-starter-app/tree/preline-ui--tailwind-css) for example usage of [Preline UI]([https://daisyui.com/](https://preline.co/)) providing components (requiring a *JS* init) for [Tailwind CSS](https://tailwindcss.com/)
+  * Note that there *may* be some complexity in getting the component `autoInit` *JS* code to initialise correctly when electric dom elements come & go - I havent explored that here.
+
+* **Tailwind + CSS-only** - See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css) for example usage of [DaisyUI](https://daisyui.com/) providing *CSS-only* components for [Tailwind CSS](https://tailwindcss.com/).
+  * Theme picker example added (see user menu on right)
+  * Because its CSS only there are a few gotchas to do with adding your own bit of JS for usability:
+    https://daisyui.com/components/dropdown/#method-2-using-css-focus
+  * and accessibility:
+    https://github.com/saadeghi/daisyui/discussions/3135
+  * But, like the author suggests, you will usually need to add your own accessibility anyway, for instance `aria-label`, etc.
 
 ## Instructions
 

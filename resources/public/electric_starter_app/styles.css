@@ -858,6 +858,65 @@ html {
   --tab-radius: 0;
 }
 
+[data-theme=tailwindui] {
+  --p: 51.0573% 0.230053 276.965635;
+  --b2: 93% 0 0;
+  --b3: 86% 0 0;
+  --in: 72.06% 0.191 231.6;
+  --su: 64.8% 0.150 160;
+  --wa: 84.71% 0.199 83.87;
+  --er: 71.76% 0.221 22.18;
+  --bc: 20% 0 0;
+  --pc: 90.2115% 0.046011 276.965635;
+  --sc: 13.6937% 0.029574 237.322518;
+  --ac: 19.3391% 0.000575 264.541934;
+  --nc: 19.6925% 0.000341 247.838921;
+  --inc: 0% 0 0;
+  --suc: 0% 0 0;
+  --wac: 0% 0 0;
+  --erc: 0% 0 0;
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: .2s;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+  --s: 68.4687% 0.147869 237.322518;
+  --a: 96.6956% 0.002874 264.541934;
+  --n: 98.4625% 0.001706 247.838921;
+  --b1: 100% 0 0;
+}
+
+[data-theme=prelineui] {
+  --p: 62.3083% 0.188015 259.814527;
+  --b1: 100% 0 0;
+  --in: 72.06% 0.191 231.6;
+  --su: 64.8% 0.150 160;
+  --wa: 84.71% 0.199 83.87;
+  --er: 71.76% 0.221 22.18;
+  --pc: 12.4617% 0.037603 259.814527;
+  --sc: 18.6384% 0.006318 255.585479;
+  --nc: 19.3391% 0.000575 264.541934;
+  --inc: 0% 0 0;
+  --suc: 0% 0 0;
+  --wac: 0% 0 0;
+  --erc: 0% 0 0;
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: .2s;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+  --s: 93.1918% 0.031591 255.585479;
+  --n: 96.6956% 0.002874 264.541934;
+}
+
 .avatar {
   position: relative;
   display: inline-flex;
@@ -2086,16 +2145,12 @@ html {
   margin-top: 0.75rem;
 }
 
-.flex {
-  display: flex;
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-24 {
   width: 6rem;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-52 {
@@ -2130,22 +2185,17 @@ html {
   gap: 0.5rem;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded-box {
   border-radius: var(--rounded-box, 1rem);
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
 .bg-neutral {
@@ -2164,11 +2214,6 @@ html {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
 }
 
 .text-neutral-content {

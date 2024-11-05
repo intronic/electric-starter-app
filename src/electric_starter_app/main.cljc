@@ -1,9 +1,40 @@
 (ns electric-starter-app.main
+  #?(:cljs (:require-macros hyperfiddle.electric-ui4))
   (:require [hyperfiddle.electric :as e]
             [hyperfiddle.electric-dom2 :as dom]
+            [hyperfiddle.electric-ui4 :as ui4]
             [electric-starter-app.dom :as d]))
 
 ;; Saving this file will automatically recompile and update in your browser
+
+;; simulate saving theme on the server, in atom
+#?(:clj (defonce !theme (atom "tailwindui")))
+(e/def theme (e/server (e/watch !theme)))
+(e/def theme-list (e/server ["lemonade", "light", "dark", "corporate", "cyberpunk", "tailwindui", "prelineui"]))
+
+(e/defn SelectTheme-change
+  "change theme on browser and save setting on server"
+  [event]
+  (e/client
+    (let [theme (.. event -target -value)]
+      #_(println "> client change theme" (.. js/document -documentElement (getAttribute "data-theme")) "->" theme)
+      (.. js/document -documentElement (setAttribute "data-theme" theme))
+      (e/server
+        #_(println "> server save theme" theme)
+        (reset! !theme theme)))))
+
+(e/defn SelectTheme []
+  (e/client
+    (dom/select
+      (e/server
+        (e/for [thm theme-list]
+          (e/client
+            (dom/option
+              (dom/props {:value thm :selected (= thm theme)})
+              (dom/text thm))))
+        (e/client
+          (dom/on "change"  SelectTheme-change))))))
+
 
 (e/defn Search []
   (e/client
@@ -29,6 +60,10 @@
               (dom/text "New"))))
         (dom/li (dom/props {})
           (dom/a (dom/props {}) (dom/text "Settings")))
+        (dom/li (dom/props {})
+          (dom/label (dom/props {})
+            (dom/text "Theme")
+            (SelectTheme.)))
         (dom/li (dom/props {})
           (dom/a (dom/props {}) (dom/text "Logout")))))))
 

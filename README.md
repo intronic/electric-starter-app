@@ -4,7 +4,7 @@ A minimal Electric Clojure app, and instructions on how to integrate it into an 
 
 Plus .. styled examples for:
 
-* **Tailwind + 3rd-party JS** - See branch [preline-ui--tailwind-css](https://github.com/intronic/electric-starter-app/tree/preline-ui--tailwind-css) for example usage of [Preline UI]([https://daisyui.com/](https://preline.co/)) providing components (requiring a *JS* init) for [Tailwind CSS](https://tailwindcss.com/)
+* **Tailwind + 3rd-party JS** - See branch [preline-ui--tailwind-css](https://github.com/intronic/electric-starter-app/tree/preline-ui--tailwind-css) for example usage of [Preline UI](https://preline.co/) providing components (requiring a *JS* init) for [Tailwind CSS](https://tailwindcss.com/)
   * Note that there *may* be some complexity in getting the component `autoInit` *JS* code to initialise correctly when electric dom elements come & go - I havent explored that here.
 
 * **Tailwind + CSS-only** - See branch [daisy-ui-tailwind-css](https://github.com/intronic/electric-starter-app/tree/daisy-ui-tailwind-css) for example usage of [DaisyUI](https://daisyui.com/) providing *CSS-only* components for [Tailwind CSS](https://tailwindcss.com/).
